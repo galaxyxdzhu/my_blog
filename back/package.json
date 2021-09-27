@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.13.3"
+    "global": "^4.4.0",
+    "koa": "^2.13.3",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.13"
   }
 }
