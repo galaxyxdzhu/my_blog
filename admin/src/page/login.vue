@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import http from '../api';
 export default {
     data() {
         return {
@@ -40,8 +41,11 @@ export default {
     },
     methods: {
         onLogin() {
-            this.$refs['loginForm'].validate((valid) => {
-                console.log(valid);
+            this.$refs['loginForm'].validate(async (valid) => {
+                if (valid) {
+                    const result = await http.common.login(this.loginForm.username, this.loginForm.password);
+                    console.log(result);
+                }
             })
         }
     }
