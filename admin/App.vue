@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <login />
-  </div>
+  <router-view/>
 </template>
 <script>
 import Login from "./src/page/login.vue";

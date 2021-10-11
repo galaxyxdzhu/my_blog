@@ -43,8 +43,13 @@ export default {
         onLogin() {
             this.$refs['loginForm'].validate(async (valid) => {
                 if (valid) {
-                    const result = await http.common.login(this.loginForm.username, this.loginForm.password);
-                    console.log(result);
+                    const {status, token} = await http.common.login(this.loginForm.username, this.loginForm.password);
+                    if (status) {
+                        localStorage.setItem('token', token);
+                        const userinfo = await http.user.getUserinfo();
+                        console.log(userinfo);
+                        // this.$router.push('/main');
+                    }
                 }
             })
         }

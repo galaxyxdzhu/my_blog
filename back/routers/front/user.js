@@ -7,7 +7,7 @@ const router = (router) => {
     /**
      * 登录
      */
-    router.post('/login', async ctx => {
+    router.post('/login', async (ctx, next) => {
         const { username, password } = ctx.request.body;
         const user = await db.getUser(username);
         if (user.length === 0) {
@@ -15,6 +15,7 @@ const router = (router) => {
                 message: '用户名不存在',
                 status: false
             }
+            next();
         } else {
             const {password: hashPassword} = user[0];
             const status = bcrypt.compareSync(password, hashPassword);
@@ -35,6 +36,7 @@ const router = (router) => {
                 }
                 
             }
+            next();
         }
     })
 
@@ -65,9 +67,11 @@ const router = (router) => {
     })
 
 
-    router.get('/userinfo', async ctx => {
-        const {state} = ctx;
-        console.log(state);
+    router.get('/userinfo', async (ctx, next) => {
+        ctx.body = {
+            status: true,
+        }
+        next();
     })
 }
 

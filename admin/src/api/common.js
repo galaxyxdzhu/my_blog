@@ -6,7 +6,7 @@ import axios from './axios';
  * @param {string} password 
  */
 export const login = async (username, password) => {
-    const result = axios.post('/login', {username, password});
+    const result = await axios.post('/login', {username, password});
     return result;
 }
 

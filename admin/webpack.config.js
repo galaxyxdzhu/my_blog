@@ -10,6 +10,7 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    devtool: 'cheap-module-source-map',
     devServer: {
         compress: false,
         port: 8081,
